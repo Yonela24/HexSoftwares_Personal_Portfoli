@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <head>
+  <style>
+    body {
+      background: url('IMG-20240403-WA0010.jpg') no-repeat center center fixed;
+    }
+  </style>
+</head>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#bio">Bio</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <!-- Bio Section -->
+    <section id="bio">
+        <h1>About Me</h1>
+        <p>Highly motivated and detail-oriented 
+            Web Developer with a strong passion for innovative problem-solving and collaborative
+            teamwork. Proficient in HTML, CSS, JavaScript, and database systems, 
+            with a solid understanding of web development technologies and 
+            trends.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h1>Skills</h1>
+        <ul>
+            <li>HTML/CSS</li>
+            <li>JavaScript</li>
+            <li>UI/UX Design</li>
+            <li>Web Development</li>
+    
+            <li>Database Systems: MySQL,</li>
+             <li> Web Development Tools: Canva, Visual Studio Code, Figma
+</li>
+             <li>Operating Systems: Wi</li>
+        </ul>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h1>Experience</h1>
+        <ul>
+            <li>
+                <h2>Graphic Designer</h2>
+                <p> COMPANY NAME                                          : MaBhala Clothing 
+     <br> Position.                                                       : Graphic designer
+     <br> Responsibilities                                                : Created graphic designs and branding materials.  
+     <br> Period                                                          : 2022 - 2024</p></li>
+            
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h1>Get in Touch</h1>
+        <p>Durban, South Africa <br>
+            <b>Contact Number:</b>  
+            <a href="tel:+27785109634">+27 78 510 9634</a>
+</p><ul>
+            <li><a href="mailto: bhekabantuyonela348@gmail.com">bhekabantuyonela348@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/yonela bhekabantu/">LinkedIn</a></li>
+            <li><a href="https://github.com/example">GitHub</a></li>
+        </ul>
+    </section>
+
+    </body>
+
+<style>
+  /* Global Styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    animation: background-fade-in 3s ease-in-out;
+  }
+
+  @keyframes background-fade-in {
+    0% {
+      background-color: #fff;
+      opacity: 0;
+    }
+    100% {
+      background-color: #f2f2f2;
+      opacity: 1;
+    }
+  }
+
+  /* Header Styles */
+  header {
+    background-color: #2196F3; /* Blue */
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+  }
+
+  header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header nav ul li {
+    margin-right: 20px;
+  }
+
+  header nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  /* Section Styles */
+  section {
+    padding: 2em;
+  }
+
+  section h1 {
+    margin-top: 0;
+    animation: fade-in 2s ease-in-out;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Typing Animation */
+  .typing {
+    animation: typing 2s steps(30), blink 0.5s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #333;
+    }
+  }
+
+  /* Color Scheme */
+  #bio {
+    background-color: #F7DC6F; /* Yellow */
+  }
+
+  #skills {
+    background-color: #FFC107; /* Red */
+    color: #fff;
+  }
+
+  #experience {
+    background-color:yellow; /* Yellow */
+  }
+
+  #contact {
+    background-color: #2196F3; /* Blue */
+    color: #fff;
+  }
+
+  /* Input Focus */
+  input:focus {
+    background-color: #ccc;
+  }
+
+  /* Utility Classes */
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .button {
+    background-color: #2196F3; /* Blue */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #1A76D2; /* Dark Blue */
+  }
+</style>
+
+<script>
+// Add event listener to navigation links
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("header nav a");
+
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href").slice(1);
+            const targetSection = document.getElementById(targetId);
+            targetSection.scrollIntoView({ behavior: "smooth" });
+        });
+    });
+});
+</script>
+</html>
+
+ 

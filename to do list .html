@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        #task-input {
+            width: 50%;
+            height: 30px;
+            font-size: 18px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #add-task-btn {
+            width: 20%;
+            height: 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .task {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .task.completed {
+            text-decoration: line-through;
+            color: #666;
+        }
+        
+        .task-time {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List App</h1>
+    <input type="text" id="task-input" placeholder="Enter a task">
+    <button id="add-task-btn">Add</button>
+    <ul id="task-list"></ul>
+    <script>
+        // Get elements
+        const taskInput = document.getElementById('task-input');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const taskList = document.getElementById('task-list');
+        
+        // Load tasks from local storage
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        
+        // Function to add task
+        function addTask(task) {
+            tasks.push(task);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTaskList();
+        }
+        
+        // Function to remove task
+        function removeTask(index) {
+            tasks.splice(index, 1);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTaskList();
+        }
+        
+        // Function to toggle task completion
+        function toggleTaskCompletion(index) {
+            tasks[index].completed = !tasks[index].completed;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTaskList();
+        }
+        
+        // Function to render task list
+        function renderTaskList() {
+            taskList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const taskElement = document.createElement('li');
+                taskElement.classList.add('task');
+                if (task.completed) {
+                    taskElement.classList.add('completed');
+                }
+                taskElement.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''}>
+                    <span>${task.name}</span>
+                    <span class="task-time">${task.time}</span>
+                    <button class="remove-btn">Remove</button>
+                `;
+                taskList.appendChild(taskElement);
+                taskElement.querySelector('.remove-btn').addEventListener('click', () => {
+                    removeTask(index);
+                });
+                taskElement.querySelector('input[type="checkbox"]').addEventListener('change', () => {
+                    toggleTaskCompletion(index);
+                });
+            });
+        }
+        
+        // Add event listener to add task button
+        addTaskBtn.addEventListener('click', () => {
+            const taskName = taskInput.value.trim();
+            if (taskName) {
+                const task = {
+                    name: taskName,
+                    completed: false,
+                    time: new Date().toLocaleTimeString()
+                };
+                addTask(task);
+                taskInput.value = '';
+            }
+        });
+        
+        // Render task list initially
+        renderTaskList();
+    </script>
+</body>
+</html>
